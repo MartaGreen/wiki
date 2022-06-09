@@ -6,20 +6,45 @@ const styles = createUseStyles({
     background: "linear-gradient(135deg,#00C4FF,#9D1BB2)",
 
     display: "flex",
-    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+
+    fontFamily: "Open Sans, sans-serif",
   },
 
   title: {
     fontSize: 60,
-    fontFamily: "Open Sans, sans-serif",
     fontWeight: 400,
     color: "#ffffff",
 
-    marginTop: "10%",
+    margin: "10% 0 ",
 
     animationName: "$title",
     animationDuration: "2s",
     animationTimingFunction: "easy-out",
+  },
+
+  navigation: {
+    minwidth: 300,
+    maxWidth: 700,
+    width: "80%",
+
+    display: "flex",
+    justifyContent: "space-between",
+
+    fontSize: 25,
+
+    animationName: "$navigation",
+    animationDuration: "3s",
+  },
+
+  link: {
+    color: "#ffffff",
+    textDecoration: "none",
+
+    "&:hover": {
+      textDecoration: "underline",
+    },
   },
 
   "@keyframes title": {
@@ -28,6 +53,19 @@ const styles = createUseStyles({
     },
     to: {
       transform: "scale(1)",
+    },
+  },
+  "@keyframes navigation": {
+    "0%": {
+      zIndex: "-5",
+      opacity: 0,
+    },
+    "70%": {
+      opacity: 0,
+    },
+    "100%": {
+      zIndex: 1,
+      opacity: "100%",
     },
   },
 });
