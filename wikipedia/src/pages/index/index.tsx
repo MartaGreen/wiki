@@ -12,7 +12,7 @@ function Index() {
           Watch time
         </Link>
         <Link to="/searchForCity" className={classes.link}>
-          Search for city
+          Search for a city
         </Link>
       </div>
     </main>

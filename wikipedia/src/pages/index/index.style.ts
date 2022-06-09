@@ -2,14 +2,11 @@ import { createUseStyles } from "react-jss";
 
 const styles = createUseStyles({
   main: {
-    height: "100vh",
     background: "linear-gradient(135deg,#00C4FF,#9D1BB2)",
 
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-
-    fontFamily: "Open Sans, sans-serif",
   },
 
   title: {
