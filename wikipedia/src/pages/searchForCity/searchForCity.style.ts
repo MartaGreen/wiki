@@ -62,10 +62,19 @@ const styles = createUseStyles({
     },
   },
 
+  article: {
+    maxWidth: 1200,
+    minWidth: 300,
+    width: "80%",
+  },
+  article__title: {
+    textAlign: "center",
+  },
+
   link: {
     textDecoration: "none",
     color: "#815fcf",
-    fontSize: 23,
+    fontSize: 17,
 
     "&:hover": {
       textDecoration: "underline",
