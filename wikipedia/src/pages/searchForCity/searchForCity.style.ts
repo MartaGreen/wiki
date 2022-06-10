@@ -38,10 +38,11 @@ const styles = createUseStyles({
     borderBottom: "5px solid #815fcf",
     borderRadius: 5,
 
-    padding: "0 25px",
+    padding: "0 15px",
     outline: "none",
 
     fontSize: 18,
+    textTransform: "capitalize",
   },
   searchField__btn: {
     width: "15%",

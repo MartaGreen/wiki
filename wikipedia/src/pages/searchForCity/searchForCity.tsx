@@ -34,10 +34,17 @@ function SearchForCity() {
   function submitHandler(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    // get searched town from input
+    // transform every first letter to uppercase for better requesting
     const input: HTMLInputElement = (
       event.target as HTMLFormElement
     ).getElementsByClassName(classes.searchField__input)[0] as HTMLInputElement;
-    const searchedString: string = input.value;
+    const inputText: string = input.value;
+    const searchedString: string = transformWord(inputText)
+      .upperFirstLetter("-")
+      .upperFirstLetter(" ")
+      .get();
+
     setSearchedString(searchedString);
   }
 
@@ -82,6 +89,23 @@ function SearchForCity() {
       </Link>
     </main>
   );
+}
+
+function transformWord(word: string) {
+  let transformedWord = word;
+  return {
+    upperFirstLetter: function (splitBy: string) {
+      transformedWord = transformedWord
+        .split(splitBy)
+        .map((word) => word[0].toUpperCase() + word.slice(1))
+        .join(splitBy);
+      return this;
+    },
+
+    get: function () {
+      return transformedWord;
+    },
+  };
 }
 
 export default SearchForCity;
