@@ -42,7 +42,7 @@ const styles = createUseStyles({
     marginLeft: 10,
 
     "&:before": {
-      content: '"Поиск"',
+      content: '"Найти город"',
       width: "100%",
       height: "100%",
 
@@ -53,7 +53,7 @@ const styles = createUseStyles({
 
       borderRadius: 5,
 
-      fontSize: 20,
+      fontSize: 15,
     },
 
     "&:hover": {

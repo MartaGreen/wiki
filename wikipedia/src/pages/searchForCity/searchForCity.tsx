@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./searchForCity.style";
 
+import { getCityByString } from "../../requests/city.requests";
+
 function SearchForCity() {
   const classes = styles();
+
+  useEffect(() => {
+    getCityByString("Самара");
+  }, []);
 
   return (
     <main className={classes.main}>

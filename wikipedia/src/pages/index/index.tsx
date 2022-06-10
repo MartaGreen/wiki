@@ -9,10 +9,10 @@ function Index() {
       <h1 className={classes.title}>Добро пожаловать!</h1>
       <div className={classes.navigation}>
         <Link to="/time" className={classes.link}>
-          Watch time
+          Время
         </Link>
         <Link to="/searchForCity" className={classes.link}>
-          Search for a city
+          Город
         </Link>
       </div>
     </main>
