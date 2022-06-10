@@ -2,7 +2,7 @@ import React, { FormEvent, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./searchForCity.style";
 
-import { getCityByString } from "../../requests/city.requests";
+import { getCityByString, getUserCity } from "../../requests/city.requests";
 import {
   ICityRequest,
   IPageInfo,
@@ -11,11 +11,18 @@ import {
 
 function SearchForCity() {
   const [content, setContent] = useState({} as IPageInfo);
-  const [searchedString, setSearchedString] = useState("Самара");
+  const [searchedString, setSearchedString] = useState("");
 
   const classes = styles();
 
   const form = useRef(null);
+
+  useEffect(() => {
+    (async function () {
+      const city: string | null = await getUserCity();
+      if (city) setSearchedString(city);
+    })();
+  }, []);
 
   useEffect(() => {
     (async function () {

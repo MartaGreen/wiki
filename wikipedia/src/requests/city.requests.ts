@@ -13,12 +13,28 @@ export async function getCityByString(searchedString: string) {
         },
       }
     );
+
     if (!response.ok) {
       throw new Error(`Unable to get data. Status: ${response.status}`);
     }
 
     const data: ICityRequest = await response.json();
     return data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
+
+export async function getUserCity() {
+  try {
+    const response: Response = await fetch("http://api.sypexgeo.net/json/");
+
+    if (!response.ok)
+      throw new Error(`Unable to get user city. Status: ${response.status}`);
+
+    const data = await response.json();
+    return data.city.name_ru;
   } catch (err) {
     console.error(err);
     return null;
