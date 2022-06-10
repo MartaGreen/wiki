@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState } from "react";
+import React, { FormEvent, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./searchForCity.style";
 
@@ -11,25 +11,55 @@ import {
 
 function SearchForCity() {
   const [content, setContent] = useState({} as IPageInfo);
+  const [searchedString, setSearchedString] = useState("Самара");
 
   const classes = styles();
+
+  const form = useRef(null);
 
   useEffect(() => {
     (async function () {
       const cityRequestData: ICityRequest | null = await getCityByString(
-        "Москва"
+        searchedString
       );
       if (!cityRequestData) return;
       const page: IPage = cityRequestData.query.pages;
       const pageId: number = Number(Object.keys(page)[0]);
       const pageInfo: IPageInfo = page[pageId];
+      console.log(pageInfo);
       setContent((state) => (state = pageInfo));
     })();
-  }, []);
+  }, [searchedString]);
+
+  function submitHandler(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const input: HTMLInputElement = (
+      event.target as HTMLFormElement
+    ).getElementsByClassName(classes.searchField__input)[0] as HTMLInputElement;
+    const searchedString: string = input.value;
+    setSearchedString(searchedString);
+  }
 
   return (
     <main className={classes.main}>
-      <form action="submit" className={classes.searchField}>
+      <form
+        className={classes.searchField}
+        onFocus={() => {
+          if (form.current)
+            (form.current as HTMLFormElement).classList.add(
+              classes["searchField-onFocus"]
+            );
+        }}
+        onBlur={() => {
+          if (form.current)
+            (form.current as HTMLFormElement).classList.remove(
+              classes["searchField-onFocus"]
+            );
+        }}
+        onSubmit={(e) => submitHandler(e)}
+        ref={form}
+      >
         <input
           type="text"
           placeholder="Введите город ..."
