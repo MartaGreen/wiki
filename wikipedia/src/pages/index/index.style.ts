@@ -65,6 +65,16 @@ const styles = createUseStyles({
       opacity: "100%",
     },
   },
+
+  "@media (max-width:768px)": {
+    main: {
+      // justifyContent: "center",
+      paddingTop: 100,
+    },
+    title: {
+      fontSize: 30,
+    },
+  },
 });
 
 export default styles;

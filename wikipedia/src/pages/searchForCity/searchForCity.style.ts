@@ -18,9 +18,11 @@ const styles = createUseStyles({
   searchField: {
     width: "50%",
     maxWidth: 800,
+    minWidth: 280,
     height: 30,
 
     display: "flex",
+    justifyContent: "center",
     transition: ".7s",
     opacity: "80%",
     margin: "30px 0",
@@ -46,7 +48,7 @@ const styles = createUseStyles({
   },
   searchField__btn: {
     width: "15%",
-    minWidth: 80,
+    minWidth: 120,
     background: "linear-gradient(135deg,#00C4FF,#9D1BB2)",
 
     padding: 5,
@@ -93,6 +95,26 @@ const styles = createUseStyles({
 
     "&:hover": {
       textDecoration: "underline",
+    },
+  },
+
+  "@media (max-width: 400px)": {
+    searchField: {
+      width: "80%",
+    },
+    "searchField-onFocus": {
+      transform: "scale(1.1)",
+    },
+    searchField__input: {
+      // flex: 0,
+      fontSize: 13,
+    },
+    searchField__btn: {
+      minWidth: 80,
+
+      "&:before": {
+        fontSize: 11,
+      },
     },
   },
 });

@@ -27,7 +27,7 @@ function SearchForCity() {
       const pageId: number = Number(Object.keys(page)[0]);
       const pageInfo: IPageInfo = page[pageId];
       console.log(pageInfo);
-      setContent((state) => (state = pageInfo));
+      setContent(pageInfo);
     })();
   }, [searchedString]);
 
