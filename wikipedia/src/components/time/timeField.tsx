@@ -1,0 +1,34 @@
+import React, { useEffect, useState } from "react";
+
+function TimeField() {
+  const [currentTime, setCurrentTime] = useState(getCurrentTime());
+
+  function timeFormatter(timeValue: number) {
+    const timeValue_str = timeValue.toString();
+    const formattedTimeValue: string =
+      timeValue_str.length === 1 ? "0" + timeValue_str : timeValue_str;
+    return formattedTimeValue;
+  }
+
+  function getCurrentTime() {
+    const currentTime = new Date();
+    const hours = timeFormatter(currentTime.getHours());
+    const minutes = timeFormatter(currentTime.getMinutes());
+    const seconds = timeFormatter(currentTime.getSeconds());
+
+    return `${hours}:${minutes}:${seconds}`;
+  }
+
+  const updateCurrentTime = () => {
+    const currentTime: string = getCurrentTime();
+    setCurrentTime(currentTime);
+  };
+
+  useEffect(() => {
+    setInterval(() => updateCurrentTime(), 1000);
+  }, []);
+
+  return <div>{currentTime}</div>;
+}
+
+export default TimeField;

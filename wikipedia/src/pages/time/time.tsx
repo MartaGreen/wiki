@@ -1,9 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import TimeField from "../../components/time/timeField";
 
 function Time() {
   return (
     <main>
-      <div></div>
+      <TimeField />
+      <Link to="/" />
     </main>
   );
 }
