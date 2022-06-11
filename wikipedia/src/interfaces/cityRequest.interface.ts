@@ -11,6 +11,7 @@ export interface IPage {
 
 export interface IPageInfo {
   extract: string;
+  missing?: string;
   ns: number;
   pageId: number;
   title: string;

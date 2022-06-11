@@ -13,7 +13,11 @@ import loadinIcon from "../../assets/loadinIcon.svg";
 function Article({ searchedString }: { searchedString: string }) {
   const [content, setContent] = useState({} as IPageInfo);
   const [status, setStatus] = useState(REQUEST_STATUS.pending);
+  const [isNoResults, setIsNoResults] = useState(false);
   const classes = styles();
+
+  const noResultsMsg: (requestMsg: string) => string = (requestMsg) =>
+    `По запросу "${requestMsg}" ничего не удалось найти.`;
 
   useEffect(() => {
     (async function () {
@@ -29,9 +33,17 @@ function Article({ searchedString }: { searchedString: string }) {
       if (cityRequestData.query) {
         setStatus(REQUEST_STATUS.success);
 
+        // get page and its data: article, extract, pageId etc.
         const page: IPage = cityRequestData.query.pages;
         const pageId: number = Number(Object.keys(page)[0]);
         const pageInfo: IPageInfo = page[pageId];
+
+        // check if extract (info about city) is empty
+        if (pageInfo.missing || !pageInfo.extract) {
+          pageInfo.extract = noResultsMsg(pageInfo.title);
+          setIsNoResults(true);
+        } else setIsNoResults(false);
+
         setContent(pageInfo);
       }
     })();
@@ -46,10 +58,14 @@ function Article({ searchedString }: { searchedString: string }) {
 
   return (
     <section className={classes.article}>
-      <h2 className={classes.article__title}>{content.title}</h2>
-      {content.extract.split("\n").map((content, index) => {
-        return <p key={index}>{content}</p>;
-      })}
+      <h2 className={classes.article__title}>
+        {isNoResults ? content.extract : content.title}
+      </h2>
+      {isNoResults
+        ? ""
+        : content.extract.split("\n").map((content, index) => {
+            return <p key={index}>{content}</p>;
+          })}
     </section>
   );
 }
