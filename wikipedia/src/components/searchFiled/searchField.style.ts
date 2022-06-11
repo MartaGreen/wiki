@@ -40,6 +40,7 @@ const styles = createUseStyles({
     padding: 5,
     border: "none",
     borderRadius: 10,
+    outline: "none",
 
     marginLeft: 10,
 

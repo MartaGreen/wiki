@@ -18,11 +18,12 @@ function SearchField({
       event.target as HTMLFormElement
     ).getElementsByClassName(classes.searchField__input)[0] as HTMLInputElement;
     const inputText: string = input.value;
+    if (!inputText) return;
+
     const searchedString: string = transformWord(inputText)
       .upperFirstLetter("-")
       .upperFirstLetter(" ")
       .get();
-
     setSearchedString(searchedString);
   }
 
