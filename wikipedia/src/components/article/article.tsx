@@ -53,7 +53,12 @@ function Article({ searchedString }: { searchedString: string }) {
     return <img src={loadinIcon} alt="loading" />;
   }
   if (status === REQUEST_STATUS.error) {
-    return <div>error</div>;
+    return (
+      <div className={classes.errorMsg}>
+        Не удалось получить доступ к сайту.
+        <br /> Перезагрузите страницу или попробуйте позже.
+      </div>
+    );
   }
 
   return (

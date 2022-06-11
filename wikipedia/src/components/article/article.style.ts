@@ -9,6 +9,12 @@ const styles = createUseStyles({
   article__title: {
     textAlign: "center",
   },
+
+  errorMsg: {
+    fontSize: 30,
+    textAlign: "center",
+    color: "red",
+  },
 });
 
 export default styles;
