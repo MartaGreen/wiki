@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import styles from "./timeFied.style";
 
 function TimeField() {
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
+  const classes = styles();
 
   function timeFormatter(timeValue: number) {
     const timeValue_str = timeValue.toString();
@@ -28,7 +30,7 @@ function TimeField() {
     setInterval(() => updateCurrentTime(), 1000);
   }, []);
 
-  return <div>{currentTime}</div>;
+  return <div className={classes.time}>{currentTime}</div>;
 }
 
 export default TimeField;

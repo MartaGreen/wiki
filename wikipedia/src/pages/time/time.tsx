@@ -1,13 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./time.style";
 
 import TimeField from "../../components/time/timeField";
 
 function Time() {
+  const classes = styles();
+
   return (
-    <main>
+    <main className={classes.main}>
       <TimeField />
-      <Link to="/" />
+      <Link to="/">Назад на главную</Link>
     </main>
   );
 }
