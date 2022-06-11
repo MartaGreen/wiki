@@ -6,6 +6,7 @@ import { getUserCity } from "../../requests/city.requests";
 
 import SearchField from "../../components/searchFiled/searchField";
 import Article from "../../components/article/article";
+import BackToMain from "../../components/backToMain/backToMain";
 
 function SearchForCity() {
   const [searchedString, setSearchedString] = useState("");
@@ -25,9 +26,7 @@ function SearchForCity() {
 
       <Article searchedString={searchedString} />
 
-      <Link to="/" className={classes.link}>
-        Назад на главную
-      </Link>
+      <BackToMain />
     </main>
   );
 }

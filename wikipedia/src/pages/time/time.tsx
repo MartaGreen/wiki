@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styles from "./time.style";
 
-import TimeField from "../../components/time/timeField";
+import TimeField from "../../components/timeField/timeField";
+import BackToMain from "../../components/backToMain/backToMain";
 
 function Time() {
   const classes = styles();
@@ -10,7 +10,7 @@ function Time() {
   return (
     <main className={classes.main}>
       <TimeField />
-      <Link to="/">Назад на главную</Link>
+      <BackToMain />
     </main>
   );
 }
