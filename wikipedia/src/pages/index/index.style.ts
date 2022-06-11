@@ -73,6 +73,7 @@ const styles = createUseStyles({
     },
     title: {
       fontSize: 30,
+      marginBottom: 60,
     },
   },
 });

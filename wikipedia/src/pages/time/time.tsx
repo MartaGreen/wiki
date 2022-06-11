@@ -1,7 +1,11 @@
 import React from "react";
 
 function Time() {
-  return <div>Time</div>;
+  return (
+    <main>
+      <div></div>
+    </main>
+  );
 }
 
 export default Time;

@@ -2,14 +2,7 @@ import { createUseStyles } from "react-jss";
 
 const styles = createUseStyles({
   main: {
-    height: "100%",
-    minHeight: "100vh",
-
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
     justifyContent: "space-between",
-
     background: "#f5f6ff",
   },
 
