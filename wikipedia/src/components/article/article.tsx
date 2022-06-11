@@ -16,11 +16,10 @@ function Article({ searchedString }: { searchedString: string }) {
       const cityRequestData: ICityRequest | null = await getCityByString(
         searchedString
       );
-      if (!cityRequestData) return;
+      if (!cityRequestData || !cityRequestData.query) return;
       const page: IPage = cityRequestData.query.pages;
       const pageId: number = Number(Object.keys(page)[0]);
       const pageInfo: IPageInfo = page[pageId];
-      console.log(pageInfo);
       setContent(pageInfo);
     })();
   }, [searchedString]);
