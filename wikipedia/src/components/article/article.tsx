@@ -51,6 +51,10 @@ function Article({ searchedString }: { searchedString: string }) {
     getCity();
   }, [searchedString]);
 
+  function createContentParagraphId(paragraph: string) {
+    return paragraph.split(" ").slice(0, 3).join("");
+  }
+
   if (status === REQUEST_STATUS.pending) {
     return <img src={loadinIcon} alt="loading" />;
   }
@@ -68,11 +72,10 @@ function Article({ searchedString }: { searchedString: string }) {
       <h2 className={classes.article__title}>
         {isNoResults ? content.extract : content.title}
       </h2>
-      {isNoResults
-        ? ""
-        : content.extract.split("\n").map((content, index) => {
-            return <p key={index}>{content}</p>;
-          })}
+      {!isNoResults &&
+        content.extract.split("\n").map((content) => {
+          return <p key={createContentParagraphId(content)}>{content}</p>;
+        })}
     </section>
   );
 }
