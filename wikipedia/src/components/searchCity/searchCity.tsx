@@ -1,10 +1,10 @@
 import React, { Dispatch, FormEvent, SetStateAction, useRef } from "react";
-import styles from "./searchField.style";
+import styles from "./searchCity.style";
 
-function SearchField({
-  setSearchedString,
+function SearchCity({
+  cityNameChanged,
 }: {
-  setSearchedString: Dispatch<SetStateAction<string>>;
+  cityNameChanged: Dispatch<SetStateAction<string>>;
 }) {
   const form = useRef(null);
   const classes = styles();
@@ -24,7 +24,7 @@ function SearchField({
       .upperFirstLetter("-")
       .upperFirstLetter(" ")
       .get();
-    setSearchedString(searchedString);
+    cityNameChanged(searchedString);
   }
 
   return (
@@ -72,4 +72,4 @@ function transformWord(word: string) {
   };
 }
 
-export default SearchField;
+export default SearchCity;

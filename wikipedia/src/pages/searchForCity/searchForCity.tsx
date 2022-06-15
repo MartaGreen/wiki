@@ -3,7 +3,7 @@ import styles from "./searchForCity.style";
 
 import { getUserCity } from "../../requests/city.requests";
 
-import SearchField from "../../components/searchFiled/searchField";
+import SearchCity from "../../components/searchCity/searchCity";
 import Article from "../../components/article/article";
 import BackToMain from "../../components/backToMain/backToMain";
 
@@ -21,7 +21,7 @@ function SearchForCity() {
 
   return (
     <main className={classes.main}>
-      <SearchField setSearchedString={setSearchedString} />
+      <SearchCity cityNameChanged={setSearchedString} />
 
       <Article searchedString={searchedString} />
 
