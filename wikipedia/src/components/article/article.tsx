@@ -20,7 +20,7 @@ function Article({ searchedString }: { searchedString: string }) {
     `По запросу "${requestMsg}" ничего не удалось найти.`;
 
   useEffect(() => {
-    (async function () {
+    const getCity = async () => {
       setStatus(REQUEST_STATUS.pending);
       const cityRequestData: ICityRequest | null = await getCityByString(
         searchedString
@@ -46,7 +46,9 @@ function Article({ searchedString }: { searchedString: string }) {
 
         setContent(pageInfo);
       }
-    })();
+    };
+
+    getCity();
   }, [searchedString]);
 
   if (status === REQUEST_STATUS.pending) {
