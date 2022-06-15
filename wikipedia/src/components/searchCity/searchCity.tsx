@@ -9,7 +9,9 @@ function SearchCity({
   const form = useRef(null);
   const classes = styles();
 
-  function submitHandler(event: FormEvent<HTMLFormElement>) {
+  // не совсем уверена в названии.
+  // другой вариант: updateCityName.
+  function sendSearchCityReq(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     // get searched town from input
@@ -27,22 +29,26 @@ function SearchCity({
     cityNameChanged(searchedString);
   }
 
+  function inputIsInFocus() {
+    if (form.current)
+      (form.current as HTMLFormElement).classList.add(
+        classes["searchField-onFocus"]
+      );
+  }
+
+  function inputIsOutOfFocus() {
+    if (form.current)
+      (form.current as HTMLFormElement).classList.remove(
+        classes["searchField-onFocus"]
+      );
+  }
+
   return (
     <form
       className={classes.searchField}
-      onFocus={() => {
-        if (form.current)
-          (form.current as HTMLFormElement).classList.add(
-            classes["searchField-onFocus"]
-          );
-      }}
-      onBlur={() => {
-        if (form.current)
-          (form.current as HTMLFormElement).classList.remove(
-            classes["searchField-onFocus"]
-          );
-      }}
-      onSubmit={(e) => submitHandler(e)}
+      onFocus={() => inputIsInFocus()}
+      onBlur={() => inputIsOutOfFocus()}
+      onSubmit={(e) => sendSearchCityReq(e)}
       ref={form}
     >
       <input
