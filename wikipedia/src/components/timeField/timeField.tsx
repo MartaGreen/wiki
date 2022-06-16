@@ -27,8 +27,10 @@ function TimeField() {
   };
 
   useEffect(() => {
-    setInterval(() => updateCurrentTime(), 1000);
-  }, []);
+    const timerInterval = setInterval(() => updateCurrentTime(), 1000);
+
+    return () => clearInterval(timerInterval);
+  }, [currentTime]);
 
   return <div className={classes.time}>{currentTime}</div>;
 }
