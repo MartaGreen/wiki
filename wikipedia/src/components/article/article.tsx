@@ -55,29 +55,27 @@ function Article({ searchedString }: { searchedString: string }) {
     return paragraph.split(" ").slice(0, 3).join("");
   }
 
-  if (status === REQUEST_STATUS.pending) {
-    return <img src={loadinIcon} alt="loading" />;
-  }
-  if (status === REQUEST_STATUS.error) {
-    return (
+  const pageContent = (status === REQUEST_STATUS.pending && (
+    <img src={loadinIcon} alt="loading" />
+  )) ||
+    (status === REQUEST_STATUS.error && (
       <div className={classes.errorMsg}>
         Не удалось получить доступ к сайту.
         <br /> Перезагрузите страницу или попробуйте позже.
       </div>
+    )) || (
+      <section className={classes.article}>
+        <h2 className={classes.article__title}>
+          {isNoResults ? content.extract : content.title}
+        </h2>
+        {!isNoResults &&
+          content.extract.split("\n").map((content) => {
+            return <p key={createContentParagraphId(content)}>{content}</p>;
+          })}
+      </section>
     );
-  }
 
-  return (
-    <section className={classes.article}>
-      <h2 className={classes.article__title}>
-        {isNoResults ? content.extract : content.title}
-      </h2>
-      {!isNoResults &&
-        content.extract.split("\n").map((content) => {
-          return <p key={createContentParagraphId(content)}>{content}</p>;
-        })}
-    </section>
-  );
+  return pageContent;
 }
 
 export default Article;
