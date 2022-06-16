@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import styles from "./article.style";
 import {
-  ICityRequest,
-  IPage,
-  IPageInfo,
-} from "../../interfaces/cityRequest.interface";
+  CityRequestType,
+  PageType,
+  PageInfoType,
+} from "../../types/cityRequest.types";
 
 import { getCityByString } from "../../requests/city.requests";
 import { REQUEST_STATUS } from "../../constants/request.constants";
 import loadinIcon from "../../assets/loadinIcon.svg";
 
 function Article({ searchedString }: { searchedString: string }) {
-  const [content, setContent] = useState({} as IPageInfo);
+  const [content, setContent] = useState({} as PageInfoType);
   const [status, setStatus] = useState(REQUEST_STATUS.pending);
   const [isNoResults, setIsNoResults] = useState(false);
   const classes = styles();
@@ -22,7 +22,7 @@ function Article({ searchedString }: { searchedString: string }) {
   useEffect(() => {
     const getCity = async () => {
       setStatus(REQUEST_STATUS.pending);
-      const cityRequestData: ICityRequest | null = await getCityByString(
+      const cityRequestData: CityRequestType | null = await getCityByString(
         searchedString
       );
 
@@ -34,9 +34,9 @@ function Article({ searchedString }: { searchedString: string }) {
         setStatus(REQUEST_STATUS.success);
 
         // get page and its data: article, extract, pageId etc.
-        const page: IPage = cityRequestData.query.pages;
+        const page: PageType = cityRequestData.query.pages;
         const pageId: number = Number(Object.keys(page)[0]);
-        const pageInfo: IPageInfo = page[pageId];
+        const pageInfo: PageInfoType = page[pageId];
 
         // check if extract (info about city) is empty
         if (pageInfo.missing || !pageInfo.extract) {

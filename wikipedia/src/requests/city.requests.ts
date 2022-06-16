@@ -1,4 +1,4 @@
-import { ICityRequest } from "../interfaces/cityRequest.interface";
+import { CityRequestType } from "../types/cityRequest.types";
 
 export async function getCityByString(searchedString: string) {
   try {
@@ -18,7 +18,7 @@ export async function getCityByString(searchedString: string) {
       throw new Error(`Unable to get data. Status: ${response.status}`);
     }
 
-    const data: ICityRequest = await response.json();
+    const data: CityRequestType = await response.json();
     return data;
   } catch (err) {
     console.error(err);
