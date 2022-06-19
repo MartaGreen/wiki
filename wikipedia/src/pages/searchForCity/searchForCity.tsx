@@ -21,7 +21,7 @@ function SearchForCity() {
 
   return (
     <main className={classes.main}>
-      <SearchCity cityNameChanged={setSearchedString} />
+      <SearchCity onCityNameChanged={setSearchedString} />
 
       <Article searchedString={searchedString} />
 

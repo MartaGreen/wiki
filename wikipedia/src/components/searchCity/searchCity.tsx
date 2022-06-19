@@ -2,16 +2,14 @@ import React, { Dispatch, FormEvent, SetStateAction, useRef } from "react";
 import styles from "./searchCity.style";
 
 function SearchCity({
-  cityNameChanged,
+  onCityNameChanged,
 }: {
-  cityNameChanged: Dispatch<SetStateAction<string>>;
+  onCityNameChanged: Dispatch<SetStateAction<string>>;
 }) {
   const form = useRef(null);
   const classes = styles();
 
-  // не совсем уверена в названии.
-  // другой вариант: updateCityName.
-  function sendSearchCityReq(event: FormEvent<HTMLFormElement>) {
+  function handleCityNameChanged(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     // get searched town from input
@@ -26,7 +24,7 @@ function SearchCity({
       .upperFirstLetter("-")
       .upperFirstLetter(" ")
       .get();
-    cityNameChanged(searchedString);
+    onCityNameChanged(searchedString);
   }
 
   function inputIsInFocus() {
@@ -48,7 +46,7 @@ function SearchCity({
       className={classes.searchField}
       onFocus={() => inputIsInFocus()}
       onBlur={() => inputIsOutOfFocus()}
-      onSubmit={(e) => sendSearchCityReq(e)}
+      onSubmit={(e) => handleCityNameChanged(e)}
       ref={form}
     >
       <input
