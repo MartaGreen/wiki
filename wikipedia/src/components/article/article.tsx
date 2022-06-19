@@ -6,7 +6,7 @@ import {
   PageInfoType,
 } from "../../types/cityRequest.types";
 
-import { getCityByString } from "../../requests/city.requests";
+import { getCityByString } from "../../api/city.requests";
 import { REQUEST_STATUS } from "../../constants/request.constants";
 import loadinIcon from "../../assets/loadinIcon.svg";
 

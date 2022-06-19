@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./searchForCity.style";
 
-import { getUserCity } from "../../requests/city.requests";
+import { getUserCity } from "../../api/city.requests";
 
 import SearchCity from "../../components/searchCity/searchCity";
 import Article from "../../components/article/article";
