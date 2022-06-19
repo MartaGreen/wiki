@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./searchForCity.style";
+import styles from "./city.styles";
 
 import { getUserCity } from "../../api/city.requests";
 
@@ -7,7 +7,7 @@ import SearchCity from "../../components/searchCity/searchCity";
 import Article from "../../components/article/article";
 import BackToMain from "../../components/backToMain/backToMain";
 
-function SearchForCity() {
+function City() {
   const [searchedString, setSearchedString] = useState("");
 
   const classes = styles();
@@ -30,4 +30,4 @@ function SearchForCity() {
   );
 }
 
-export default SearchForCity;
+export default City;

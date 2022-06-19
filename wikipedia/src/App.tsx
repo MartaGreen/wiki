@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Index from "./pages/index";
 import Time from "./pages/time/time";
-import SearchForCity from "./pages/searchForCity/searchForCity";
+import City from "./pages/city/city";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="time" element={<Time />} />
-        <Route path="searchForCity" element={<SearchForCity />} />
+        <Route path="searchForCity" element={<City />} />
       </Routes>
     </Router>
   );
