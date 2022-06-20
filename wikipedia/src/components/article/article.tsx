@@ -6,7 +6,7 @@ import {
   PageInfoType,
 } from "../../types/cityRequest.types";
 
-import { getCityByString } from "../../api/city.requests";
+import { getCityByName } from "../../api/city.api";
 import { REQUEST_STATUS } from "../../constants/request.constants";
 import loadinIcon from "../../assets/loadinIcon.svg";
 
@@ -22,7 +22,7 @@ function Article({ cityName }: { cityName: string }) {
   useEffect(() => {
     const getCity = async () => {
       setStatus(REQUEST_STATUS.pending);
-      const cityRequestData: CityRequestType | null = await getCityByString(
+      const cityRequestData: CityRequestType | null = await getCityByName(
         cityName
       );
 

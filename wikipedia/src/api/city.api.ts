@@ -1,11 +1,11 @@
 import { CityRequestType } from "../types/cityRequest.types";
 
-export async function getCityByString(searchedString: string) {
+export async function getCityByName(cityName: string) {
   try {
     const response: Response = await fetch(
       // `https://ru.wikipedia.org/w/api.php/?action=query&list=search&utf8=&format=json&origin=*&srsearch=${searchedString}`,
       // `https://en.wikipedia.org//w/api.php?action=query&format=json&origin=*&list=search&srsearch=${searchedString}`,
-      `https://ru.wikipedia.org/w/api.php?format=json&origin=*&action=query&prop=extracts&explaintext=true&exsectionformat=plain&exintro=true&titles=${searchedString}`,
+      `https://ru.wikipedia.org/w/api.php?format=json&origin=*&action=query&prop=extracts&explaintext=true&exsectionformat=plain&exintro=true&titles=${cityName}`,
       {
         headers: {
           "Content-Type": "application/json",
