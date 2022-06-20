@@ -16,8 +16,8 @@ function Article({ cityName }: { cityName: string }) {
   const [isNoResults, setIsNoResults] = useState(false);
   const classes = styles();
 
-  const noResultsMsg: (requestMsg: string) => string = (requestMsg) =>
-    `По запросу "${requestMsg}" ничего не удалось найти.`;
+  const noResultsMsg: (requestedCity: string) => string = (requestedCity) =>
+    `По запросу "${requestedCity}" ничего не удалось найти.`;
 
   useEffect(() => {
     const getCity = async () => {
