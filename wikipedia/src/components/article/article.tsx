@@ -10,7 +10,7 @@ import { getCityByString } from "../../api/city.requests";
 import { REQUEST_STATUS } from "../../constants/request.constants";
 import loadinIcon from "../../assets/loadinIcon.svg";
 
-function Article({ searchedString }: { searchedString: string }) {
+function Article({ cityName }: { cityName: string }) {
   const [content, setContent] = useState({} as PageInfoType);
   const [status, setStatus] = useState(REQUEST_STATUS.pending);
   const [isNoResults, setIsNoResults] = useState(false);
@@ -23,7 +23,7 @@ function Article({ searchedString }: { searchedString: string }) {
     const getCity = async () => {
       setStatus(REQUEST_STATUS.pending);
       const cityRequestData: CityRequestType | null = await getCityByString(
-        searchedString
+        cityName
       );
 
       if (!cityRequestData) {
@@ -49,7 +49,7 @@ function Article({ searchedString }: { searchedString: string }) {
     };
 
     getCity();
-  }, [searchedString]);
+  }, [cityName]);
 
   function createContentParagraphId(paragraph: string) {
     return paragraph.split(" ").slice(0, 3).join("");

@@ -8,22 +8,22 @@ import Article from "../../components/article/article";
 import BackToMain from "../../components/backToMain/backToMain";
 
 function City() {
-  const [searchedString, setSearchedString] = useState("");
+  const [cityName, setCityName] = useState("");
 
   const classes = styles();
 
   useEffect(() => {
     (async function () {
       const city: string | null = await getUserCity();
-      if (city) setSearchedString(city);
+      if (city) setCityName(city);
     })();
   }, []);
 
   return (
     <main className={classes.main}>
-      <SearchCity onCityNameChanged={setSearchedString} />
+      <SearchCity onCityNameChanged={setCityName} />
 
-      <Article searchedString={searchedString} />
+      <Article cityName={cityName} />
 
       <BackToMain />
     </main>
