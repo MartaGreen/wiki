@@ -28,7 +28,7 @@ export async function getCityByName(cityName: string) {
 
 export async function getUserCity() {
   try {
-    const response: Response = await fetch("http://api.sypexgeo.net/json/");
+    const response: Response = await fetch("https://api.sypexgeo.net/json/");
 
     if (!response.ok)
       throw new Error(`Unable to get user city. Status: ${response.status}`);
