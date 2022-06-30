@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="time" element={<Time />} />
-        <Route path="searchForCity" element={<City />} />
+        <Route path="city" element={<City />} />
       </Routes>
     </Router>
   );
