@@ -5,7 +5,7 @@ import { getUserCity } from "../../api/city.api";
 
 import SearchCity from "../../components/searchCity/searchCity";
 import Article from "../../components/article/article";
-import BackToMain from "../../components/backToMain/backToMain";
+import Header from "../../components/header/header";
 
 function City() {
   const [cityName, setCityName] = useState("");
@@ -22,13 +22,14 @@ function City() {
   }, []);
 
   return (
-    <main className={classes.main}>
-      <SearchCity onCityNameChanged={setCityName} />
+    <div>
+      <Header />
+      <main className={classes.main}>
+        <SearchCity onCityNameChanged={setCityName} />
 
-      <Article cityName={cityName} />
-
-      <BackToMain />
-    </main>
+        <Article cityName={cityName} />
+      </main>
+    </div>
   );
 }
 

@@ -2,16 +2,18 @@ import React from "react";
 import styles from "./time.style";
 
 import TimeField from "../../components/timeField/timeField";
-import BackToMain from "../../components/backToMain/backToMain";
+import Header from "../../components/header/header";
 
 function Time() {
   const classes = styles();
 
   return (
-    <main className={classes.main}>
-      <TimeField />
-      <BackToMain />
-    </main>
+    <div>
+      <Header />
+      <main className={classes.main}>
+        <TimeField />
+      </main>
+    </div>
   );
 }
 

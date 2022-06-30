@@ -2,6 +2,13 @@ import React, { useEffect, useState } from "react";
 import styles from "./timeFied.style";
 
 function TimeField() {
+  const timeFormatter = (timeValue: number): string => {
+    const timeValue_str = timeValue.toString();
+    const formattedTimeValue: string =
+      timeValue_str.length === 1 ? "0" + timeValue_str : timeValue_str;
+    return formattedTimeValue;
+  };
+
   const getCurrentTime = (): string => {
     const currentTime = new Date();
     const hours = timeFormatter(currentTime.getHours());
@@ -17,13 +24,6 @@ function TimeField() {
   const updateCurrentTime = () => {
     const currentTime: string = getCurrentTime();
     setCurrentTime(currentTime);
-  };
-
-  const timeFormatter = (timeValue: number): string => {
-    const timeValue_str = timeValue.toString();
-    const formattedTimeValue: string =
-      timeValue_str.length === 1 ? "0" + timeValue_str : timeValue_str;
-    return formattedTimeValue;
   };
 
   useEffect(() => {

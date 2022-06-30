@@ -5,7 +5,7 @@ import styles from "./index.style";
 function Index() {
   const classes = styles();
   return (
-    <main className={classes.main}>
+    <main className={classes.main} style={{ minHeight: "100vh" }}>
       <h1 className={classes.title}>Добро пожаловать!</h1>
       <div className={classes.navigation}>
         <Link to="/time" className={classes.link}>
