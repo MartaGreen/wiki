@@ -55,27 +55,30 @@ function Article({ cityName }: { cityName: string }) {
     return paragraph.split(" ").slice(0, 3).join("");
   }
 
-  const pageContent = (status === REQUEST_STATUS.pending && (
-    <img src={loadinIcon} alt="loading" />
-  )) ||
-    (status === REQUEST_STATUS.error && (
-      <div className={classes.errorMsg}>
-        Не удалось получить доступ к сайту.
-        <br /> Перезагрузите страницу или попробуйте позже.
-      </div>
-    )) || (
-      <section className={classes.article}>
-        <h2 className={classes.article__title}>
-          {isNoResults ? content.extract : content.title}
-        </h2>
-        {!isNoResults &&
-          content.extract.split("\n").map((content) => {
-            return <p key={createContentParagraphId(content)}>{content}</p>;
-          })}
-      </section>
-    );
-
-  return pageContent;
+  return (
+    <div>
+      {status === REQUEST_STATUS.pending && (
+        <img src={loadinIcon} alt="loading" />
+      )}
+      {status === REQUEST_STATUS.error && (
+        <div className={classes.errorMsg}>
+          Не удалось получить доступ к сайту.
+          <br /> Перезагрузите страницу или попробуйте позже.
+        </div>
+      )}
+      {status === REQUEST_STATUS.success && (
+        <section className={classes.article}>
+          <h2 className={classes.article__title}>
+            {isNoResults ? content.extract : content.title}
+          </h2>
+          {!isNoResults &&
+            content.extract.split("\n").map((content) => {
+              return <p key={createContentParagraphId(content)}>{content}</p>;
+            })}
+        </section>
+      )}
+    </div>
+  );
 }
 
 export default Article;
