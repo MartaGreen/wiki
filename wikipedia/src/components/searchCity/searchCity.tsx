@@ -9,7 +9,7 @@ function SearchCity({
   const form = useRef(null);
   const classes = styles();
 
-  function handleCityNameChanged(event: FormEvent<HTMLFormElement>) {
+  const handleCityNameChanged = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
     // get searched town from input
@@ -25,21 +25,21 @@ function SearchCity({
       .upperFirstLetter(" ")
       .get();
     onCityNameChanged(searchedString);
-  }
+  };
 
-  function inputIsInFocus() {
+  const inputIsInFocus = (): void => {
     if (form.current)
       (form.current as HTMLFormElement).classList.add(
         classes["searchField-onFocus"]
       );
-  }
+  };
 
-  function inputIsOutOfFocus() {
+  const inputIsOutOfFocus = (): void => {
     if (form.current)
       (form.current as HTMLFormElement).classList.remove(
         classes["searchField-onFocus"]
       );
-  }
+  };
 
   return (
     <form

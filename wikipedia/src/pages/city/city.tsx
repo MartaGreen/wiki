@@ -13,10 +13,12 @@ function City() {
   const classes = styles();
 
   useEffect(() => {
-    (async function () {
+    const userCity = async (): Promise<void> => {
       const city: string | null = await getUserCity();
       if (city) setCityName(city);
-    })();
+    };
+
+    userCity();
   }, []);
 
   return (
