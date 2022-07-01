@@ -8,7 +8,6 @@ const styles = createUseStyles({
 
     display: "flex",
     justifyContent: "center",
-    // alignItems: "flex-start",
     marginTop: 40,
   },
   article__title: {

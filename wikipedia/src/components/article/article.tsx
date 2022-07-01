@@ -10,7 +10,13 @@ import { getCityByName } from "../../api/city.api";
 import { REQUEST_STATUS } from "../../constants/request.constants";
 import loadinIcon from "../../assets/loadinIcon.svg";
 
-function Article({ cityName }: { cityName: string }) {
+function Article({
+  cityName,
+  resetCityName,
+}: {
+  cityName: string;
+  resetCityName: React.Dispatch<React.SetStateAction<string>>;
+}) {
   const [content, setContent] = useState({} as PageInfoType);
   const [status, setStatus] = useState(REQUEST_STATUS.pending);
   const [isNoResults, setIsNoResults] = useState(false);
@@ -28,6 +34,7 @@ function Article({ cityName }: { cityName: string }) {
 
       if (!cityRequestData) {
         setStatus(REQUEST_STATUS.error);
+        resetCityName("");
         return;
       }
       if (cityRequestData.query) {

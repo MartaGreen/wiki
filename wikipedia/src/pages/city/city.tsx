@@ -27,7 +27,7 @@ function City() {
       <main className={classes.main}>
         <SearchCity onCityNameChanged={setCityName} />
 
-        <Article cityName={cityName} />
+        <Article cityName={cityName} resetCityName={setCityName} />
       </main>
     </div>
   );
