@@ -56,7 +56,7 @@ function Article({ cityName }: { cityName: string }) {
   }
 
   return (
-    <div>
+    <section className={classes.article}>
       {status === REQUEST_STATUS.pending && (
         <img src={loadinIcon} alt="loading" />
       )}
@@ -67,7 +67,7 @@ function Article({ cityName }: { cityName: string }) {
         </div>
       )}
       {status === REQUEST_STATUS.success && (
-        <section className={classes.article}>
+        <div>
           <h2 className={classes.article__title}>
             {isNoResults ? content.extract : content.title}
           </h2>
@@ -75,9 +75,9 @@ function Article({ cityName }: { cityName: string }) {
             content.extract.split("\n").map((content) => {
               return <p key={createContentParagraphId(content)}>{content}</p>;
             })}
-        </section>
+        </div>
       )}
-    </div>
+    </section>
   );
 }
 

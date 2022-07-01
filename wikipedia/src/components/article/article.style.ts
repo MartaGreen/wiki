@@ -5,6 +5,11 @@ const styles = createUseStyles({
     maxWidth: 1200,
     minWidth: 300,
     width: "80%",
+
+    display: "flex",
+    justifyContent: "center",
+    // alignItems: "flex-start",
+    marginTop: 40,
   },
   article__title: {
     textAlign: "center",
