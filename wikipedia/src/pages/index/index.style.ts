@@ -18,10 +18,11 @@ const styles = createUseStyles({
     color: "black",
 
     marginBottom: 40,
+    textAlign: "center",
   },
 
   navigation: {
-    minwidth: 300,
+    minWidth: 300,
     maxWidth: 700,
     width: "80%",
 
@@ -61,13 +62,18 @@ const styles = createUseStyles({
   link_time: {
     "&:hover": {
       backgroundImage: `url(${timeImage})`,
-      backgroundPosition: "right bottom",
     },
   },
   link_city: {
     "&:hover": {
       backgroundImage: `url(${cityImage})`,
-      backgroundPosition: "center",
+    },
+  },
+
+  "@media (max-width: 500px)": {
+    link: {
+      margin: 10,
+      height: 130,
     },
   },
 });
